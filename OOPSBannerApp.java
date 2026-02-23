@@ -1,20 +1,21 @@
 /**
- * OOPS Banner App - Use Case 1: Print OOPS to Console
- * This class serves as the container for our application logic.
+ * OOPSBannerApp
  *
- * @author [Enter Your Name Here]
- * @version 1.0
+ * UC2: Render OOPS as Banner using Print Statements
+ *
+ * @author Divya
+ * @version 2.0
  */
 public class OOPSBannerApp {
 
-    /**
-     * The main method is the application's entry point.
-     * @param args Command line arguments
-     */
     public static void main(String[] args) {
-        
-        // Using System.out.println() to print the String Literal
-        System.out.println("OOPS");
-        
+
+        System.out.println("  ***     " + "  ***     " + " *****   " + " ***** ");
+        System.out.println(" ** **    " + " ** **    " + " **  **  " + " **    ");
+        System.out.println("**   **   " + "**   **   " + " **   ** " + " **    ");
+        System.out.println("**   **   " + "**   **   " + " *****   " + " ***   ");
+        System.out.println("**   **   " + "**   **   " + " **      " + "   **  ");
+        System.out.println(" ** **    " + " ** **    " + " **      " + "   **  ");
+        System.out.println("  ***     " + "  ***     " + " **      " + " ***** ");
     }
 }
