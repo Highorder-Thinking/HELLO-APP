@@ -1,10 +1,15 @@
  feature/UC1-PrintOOPS
 /**
+ features/UC3-PrintOOPS
+ * OOPSBannerApp
+ *
+ * UC3: Render OOPS as Banner using String.join
  * OOPS Banner App - Use Case 1: Print OOPS to Console
  * This class serves as the container for our application logic.
+ dev
  *
  * @author Divya
- * @version 2.0
+ * @version 3.0
  */
 public class OOPSBannerApp {
 import java.util.Collections;
@@ -12,6 +17,14 @@ import java.util.Collections;
 
 public class BannerAppUC5 {
     public static void main(String[] args) {
+ features/UC3-PrintOOPS
+        System.out.println(String.join("", "  *** ", "  *** ", " ***** ", " ***** "));
+        System.out.println(String.join("", " ** ** ", " ** ** ", " ** ** ", " ** "));
+        System.out.println(String.join("", "** ** ", "** ** ", " ** ** ", " ** "));
+        System.out.println(String.join("", "** ** ", "** ** ", " ***** ", " *** "));
+        System.out.println(String.join("", "** ** ", "** ** ", " ** ", "   ** "));
+        System.out.println(String.join("", " ** ** ", " ** ** ", " ** ", "   ** "));
+        System.out.println(String.join("", "  *** ", "  *** ", " ** ", " ***** "));
         String symbol = "*";
         int width = 20;
 
@@ -30,5 +43,6 @@ public class BannerAppUC5 {
         for (String line : bannerLines) {
             System.out.println(line);
         }
+ dev
     }
 }
