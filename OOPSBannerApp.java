@@ -2,8 +2,8 @@
  * OOPS Banner App - Use Case 1: Print OOPS to Console
  * This class serves as the container for our application logic.
  *
- * @author [Enter Your Name Here]
- * @version 1.0
+ * @author Divya
+ * @version 2.0
  */
 public class OOPSBannerApp {
 
