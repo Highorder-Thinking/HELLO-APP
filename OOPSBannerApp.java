@@ -1,3 +1,5 @@
+ feature/UC4-array-loop
+
  feature/UC1-PrintOOPS
 /**
  features/UC3-PrintOOPS
@@ -11,12 +13,28 @@
  * @author Divya
  * @version 3.0
  */
+ dev
 public class OOPSBannerApp {
 import java.util.Collections;
  dev
 
 public class BannerAppUC5 {
     public static void main(String[] args) {
+ feature/UC4-array-loop
+        String[] oopsBanner = {
+            String.join("", "  *** ", "  *** ", " ***** ", " ***** "),
+            String.join("", " ** ** ", " ** ** ", " ** ** ", " ** "),
+            String.join("", "** ** ", "** ** ", " ** ** ", " ** "),
+            String.join("", "** ** ", "** ** ", " ***** ", " *** "),
+            String.join("", "** ** ", "** ** ", " ** ", "   ** "),
+            String.join("", " ** ** ", " ** ** ", " ** ", "   ** "),
+            String.join("", "  *** ", "  *** ", " ** ", " ***** ")
+        };
+
+        for (String line : oopsBanner) {
+            System.out.println(line);
+        }
+
  features/UC3-PrintOOPS
         System.out.println(String.join("", "  *** ", "  *** ", " ***** ", " ***** "));
         System.out.println(String.join("", " ** ** ", " ** ** ", " ** ** ", " ** "));
@@ -43,6 +61,7 @@ public class BannerAppUC5 {
         for (String line : bannerLines) {
             System.out.println(line);
         }
+ dev
  dev
     }
 }
