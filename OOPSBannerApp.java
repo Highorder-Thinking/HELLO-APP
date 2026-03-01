@@ -1,24 +1,58 @@
-import java.util.Collections;
+/**
+ * OOPS Banner App - UC6
+ * Focus: Modularization using Static Methods and DRY Principle.
+ */
+public class OOPSBannerApp {
 
-public class BannerAppUC5 {
     public static void main(String[] args) {
-        String symbol = "*";
-        int width = 20;
-
-        // UC5: Combined Declaration and Initialization
-        String[] bannerLines = {
-            String.join("", Collections.nCopies(width, symbol)), // Line 1: Top Border
-            symbol + String.join("", Collections.nCopies(width - 2, " ")) + symbol, // Line 2: Padding
-            symbol + "  OOPS CONCEPTS   " + symbol,              // Line 3: Content
-            symbol + "   USE CASE - 5   " + symbol,              // Line 4: Sub-content
-            symbol + " ARRAY INITIALIZE " + symbol,              // Line 5: Feature
-            symbol + String.join("", Collections.nCopies(width - 2, " ")) + symbol, // Line 6: Padding
-            String.join("", Collections.nCopies(width, symbol))  // Line 7: Bottom Border
+        // Step 1: Initialize the banner array by calling static helper methods
+        // This eliminates hardcoding strings directly in the main method logic.
+        String[][] banner = {
+            getCharO(),
+            getCharO(),
+            getCharP(),
+            getCharS()
         };
 
-        // Enhanced for loop for efficient rendering
-        for (String line : bannerLines) {
-            System.out.println(line);
+        // Step 2: Render the banner
+        // We loop through the rows (5 rows per character)
+        for (int row = 0; row < 5; row++) {
+            for (int col = 0; col < banner.length; col++) {
+                System.out.print(banner[col][row] + "  "); // Added spacing for readability
+            }
+            System.out.println(); // Move to the next line after printing each segment of the row
         }
+    }
+
+    // --- Static Helper Methods (The "Modular" Part) ---
+
+    public static String[] getCharO() {
+        return new String[]{
+            " ***** ",
+            "* *",
+            "* *",
+            "* *",
+            " ***** "
+        };
+    }
+
+    public static String[] getCharP() {
+        return new String[]{
+            "****** ",
+            "* *",
+            "****** ",
+            "* ",
+            "* "
+        };
+    }
+
+    public static String[] getCharS() {
+        return new String[]{
+            " ***** ",
+            "* ",
+            " ***** ",
+            "      *",
+            " ***** "
+        };
     }
 }
