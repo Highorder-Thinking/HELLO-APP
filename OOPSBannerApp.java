@@ -2,7 +2,11 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class BannerApp {
+public class OOPSBannerApp {
+
+ feature/UC8-Map-collection
+    // 1. Centralized Character Pattern Map
+    private static final Map<Character, String[]> patternMap = new HashMap<>();
 
     // UC7: Static Inner Class to manage character patterns
     public static class CharacterPatternMap {
@@ -113,52 +117,63 @@ import java.util.Collections;
 
     // Centralized Storage for Patterns
     private static final Map<Character, CharacterPatternMap> patternLibrary = new HashMap<>();
+ dev
 
     static {
-        // Defining patterns for 'O', 'P', 'S'
-        patternLibrary.put('O', new CharacterPatternMap('O', new String[]{
+        // Initialize patterns once in a static block
+        patternMap.put('O', new String[]{
             "  *** ",
             " * * ",
             " * * ",
             " * * ",
             "  *** "
-        }));
-        
-        patternLibrary.put('P', new CharacterPatternMap('P', new String[]{
+        });
+
+        patternMap.put('P', new String[]{
             " **** ",
             " * * ",
             " **** ",
             " * ",
             " * "
-        }));
+        });
 
-        patternLibrary.put('S', new CharacterPatternMap('S', new String[]{
+        patternMap.put('S', new String[]{
             "  **** ",
             " * ",
             "  *** ",
             "     * ",
             " **** "
-        }));
-    }
-
-    public void displayBanner(String word) {
-        word = word.toUpperCase();
-        int height = 5; // Fixed height for our patterns
-
-        for (int i = 0; i < height; i++) {
-            StringBuilder lineResult = new StringBuilder();
-            for (char c : word.toCharArray()) {
-                if (patternLibrary.containsKey(c)) {
-                    lineResult.append(patternLibrary.get(c).getPattern()[i]).append("  ");
-                }
-            }
-            System.out.println(lineResult);
-        }
+        });
     }
 
     public static void main(String[] args) {
-        BannerApp app = new BannerApp();
-        System.out.println("--- UC7: OOPS Banner ---");
-        app.displayBanner("OOPS");
+        renderBanner("OOPS");
+    }
+
+    /**
+     * UC8 Logic: Renders a word by fetching patterns from the Map
+     * @param word The string to be converted into a banner
+     */
+    public static void renderBanner(String word) {
+        int height = 5; // Assuming a standard height for all patterns
+        String upperWord = word.toUpperCase();
+
+        // Outer loop iterates through each row of the banner
+        for (int row = 0; row < height; row++) {
+            StringBuilder lineOutput = new StringBuilder();
+
+            // Inner loop iterates through each character in the word
+            for (char c : upperWord.toCharArray()) {
+                if (patternMap.containsKey(c)) {
+                    // Fetch the specific row for the current character
+                    lineOutput.append(patternMap.get(c)[row]).append("  ");
+                } else {
+                    // Handle missing characters with blank space
+                    lineOutput.append("       "); 
+                }
+            }
+            // Print the assembled row
+            System.out.println(lineOutput);
+        }
     }
 }
