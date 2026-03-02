@@ -1,58 +1,76 @@
-/**
- * OOPS Banner App - UC6
- * Focus: Modularization using Static Methods and DRY Principle.
- */
-public class OOPSBannerApp {
+import java.util.HashMap;
+import java.util.Map;
 
-    public static void main(String[] args) {
-        // Step 1: Initialize the banner array by calling static helper methods
-        // This eliminates hardcoding strings directly in the main method logic.
-        String[][] banner = {
-            getCharO(),
-            getCharO(),
-            getCharP(),
-            getCharS()
-        };
+public class BannerApp {
 
-        // Step 2: Render the banner
-        // We loop through the rows (5 rows per character)
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col < banner.length; col++) {
-                System.out.print(banner[col][row] + "  "); // Added spacing for readability
-            }
-            System.out.println(); // Move to the next line after printing each segment of the row
+    // UC7: Static Inner Class to manage character patterns
+    public static class CharacterPatternMap {
+        private final char character;
+        private final String[] pattern;
+
+        // Constructor to initialize the character and its ASCII lines
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
         }
     }
 
-    // --- Static Helper Methods (The "Modular" Part) ---
+    // Centralized Storage for Patterns
+    private static final Map<Character, CharacterPatternMap> patternLibrary = new HashMap<>();
 
-    public static String[] getCharO() {
-        return new String[]{
-            " ***** ",
-            "* *",
-            "* *",
-            "* *",
-            " ***** "
-        };
+    static {
+        // Defining patterns for 'O', 'P', 'S'
+        patternLibrary.put('O', new CharacterPatternMap('O', new String[]{
+            "  *** ",
+            " * * ",
+            " * * ",
+            " * * ",
+            "  *** "
+        }));
+        
+        patternLibrary.put('P', new CharacterPatternMap('P', new String[]{
+            " **** ",
+            " * * ",
+            " **** ",
+            " * ",
+            " * "
+        }));
+
+        patternLibrary.put('S', new CharacterPatternMap('S', new String[]{
+            "  **** ",
+            " * ",
+            "  *** ",
+            "     * ",
+            " **** "
+        }));
     }
 
-    public static String[] getCharP() {
-        return new String[]{
-            "****** ",
-            "* *",
-            "****** ",
-            "* ",
-            "* "
-        };
+    public void displayBanner(String word) {
+        word = word.toUpperCase();
+        int height = 5; // Fixed height for our patterns
+
+        for (int i = 0; i < height; i++) {
+            StringBuilder lineResult = new StringBuilder();
+            for (char c : word.toCharArray()) {
+                if (patternLibrary.containsKey(c)) {
+                    lineResult.append(patternLibrary.get(c).getPattern()[i]).append("  ");
+                }
+            }
+            System.out.println(lineResult);
+        }
     }
 
-    public static String[] getCharS() {
-        return new String[]{
-            " ***** ",
-            "* ",
-            " ***** ",
-            "      *",
-            " ***** "
-        };
+    public static void main(String[] args) {
+        BannerApp app = new BannerApp();
+        System.out.println("--- UC7: OOPS Banner ---");
+        app.displayBanner("OOPS");
     }
 }
