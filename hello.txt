@@ -1,12 +1,16 @@
 public class HelloApp {
     public static void main(String[] args) {
-        // Check if an argument was provided
+
+        String name;
+
+        // Check if user provided a command-line argument
         if (args.length > 0) {
-            // UC2: Display Hello with the first command-line argument
-            System.out.println("Hello, " + args[0] + "!");
+            name = args[0];
         } else {
-            // Fallback if no name is provided
-            System.out.println("Hello World!");
+            name = "World"; // default value
         }
+
+        // Print greeting
+        System.out.println("Hello, " + name + "!");
     }
 }
