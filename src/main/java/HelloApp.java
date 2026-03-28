@@ -1,10 +1,11 @@
 public class HelloApp {
     public static void main(String[] args) {
-        // UC2: Check if a name was provided as a command-line argument
         if (args.length > 0) {
-            System.out.println("Hello " + args[0]);
+            // Loop through every name provided in the arguments
+            for (String name : args) {
+                System.out.println("Hello " + name);
+            }
         } else {
-            // Default behavior if no argument is given
             System.out.println("Hello World");
         }
     }
