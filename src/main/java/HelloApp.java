@@ -1,22 +1,14 @@
 public class HelloApp {
     public static void main(String[] args) {
- feature/UC4-display-multiple-names
-        // UC4: Check if any names were provided
+        // UC5: Check if arguments are provided
         if (args.length > 0) {
-            // Loop through the array of arguments
-
-        if (args.length > 0) {
-            // Loop through every name provided in the arguments
- dev
+            // Using the Enhanced For Loop (For-Each)
             for (String name : args) {
                 System.out.println("Hello " + name);
             }
         } else {
- feature/UC4-display-multiple-names
-            // Default behavior if the array is empty
-
- dev
-            System.out.println("Hello World");
+            // Default greeting as per UC5 description
+            System.out.println("Hello, World!");
         }
     }
 }
